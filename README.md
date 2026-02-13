@@ -2,6 +2,9 @@
 
 TL;DR: The 2023 HTTP/2 Rapid Reset attack demonstrated how fully protocol-compliant behaviour could be weaponised to generate nearly 200 million requests per second while keeping attacker cost relatively low. By rapidly creating and cancelling HTTP/2 streams, attackers exploited multiplexing features designed for performance, creating a severe asymmetry between attacker effort and defender resource consumption at global scale.
 
+For the full original reflective write-up, see:  
+[Full Analysis](./full-analysis.md)
+
 ## Overview
 
 I decided to take a deeper look into the HTTP/2 Rapid Reset DDoS attack not only because it was a record-breaking traffic spike that Cloudflare mitigated, but because of the creativity and subtlety of the attack itself. Unlike traditional volumetric DDoS attacks that rely on sheer overwhelming bandwidth, this attack abused standard protocol behaviour in a way that made malicious traffic difficult to distinguish from legitimate usage. Cloudflare mitigated traffic reaching nearly 200 million requests per second — roughly three times larger than the previous record. What stood out most was that the traffic consisted of valid HTTP/2 frames, not malformed packets.
